@@ -1,0 +1,21 @@
+# Python / backend
+__pycache__/
+*.py[cod]
+.venv/
+*.sqlite3
+
+# Node / frontend
+node_modules/
+.next/
+out/
+build/
+
+# Env files
+.env
+.env.*
+!.env.example
+!.env.local.example
+
+# OS / editor
+.DS_Store
+*.log
