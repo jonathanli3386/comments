@@ -47,6 +47,12 @@ class CommentAPITests(APITestCase):
         self.assertEqual(response.status_code, status.HTTP_204_NO_CONTENT)
         self.assertFalse(Comment.objects.filter(id=self.comment.id).exists())
 
+    def test_reset_restores_seed_data(self):
+        response = self.client.post("/api/comments/reset/")
+        self.assertEqual(response.status_code, status.HTTP_200_OK)
+        self.assertEqual(Comment.objects.count(), 16)
+        self.assertEqual(len(response.data), 16)
+
 
 class SeedCommandTests(TestCase):
     def test_seed_loads_all_comments(self):
