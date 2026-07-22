@@ -17,3 +17,4 @@ export interface Comment {
 export type AddComment = (text: string) => Promise<void>;
 export type EditComment = (id: number, text: string) => Promise<void>;
 export type DeleteComment = (id: number) => Promise<void>;
+export type ResetComments = () => Promise<void>;

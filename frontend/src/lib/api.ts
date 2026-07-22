@@ -37,3 +37,7 @@ export function updateComment(id: number, text: string): Promise<Comment> {
 export function deleteComment(id: number): Promise<void> {
   return request<void>(`/comments/${id}/`, { method: "DELETE" });
 }
+
+export function resetComments(): Promise<Comment[]> {
+  return request<Comment[]>("/comments/reset/", { method: "POST" });
+}

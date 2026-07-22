@@ -2,12 +2,14 @@
 
 import { CommentForm } from "@/components/comment-form";
 import { CommentItem } from "@/components/comment-item";
+import { ResetDialog } from "@/components/reset-dialog";
 import { Button } from "@/components/ui/button";
 import { Skeleton } from "@/components/ui/skeleton";
 import { useComments } from "@/hooks/use-comments";
 
 export function CommentList() {
-  const { comments, loading, error, reload, add, edit, remove } = useComments();
+  const { comments, loading, error, reload, add, edit, remove, reset } =
+    useComments();
 
   return (
     <section>
@@ -26,9 +28,12 @@ export function CommentList() {
 
       {!loading && !error && (
         <>
-          <h2 className="border-t py-4 font-mono text-xs uppercase tracking-widest text-muted-foreground">
-            {comments.length} {comments.length === 1 ? "comment" : "comments"}
-          </h2>
+          <div className="flex items-center justify-between border-t py-4">
+            <h2 className="font-mono text-xs uppercase tracking-widest text-muted-foreground">
+              {comments.length} {comments.length === 1 ? "comment" : "comments"}
+            </h2>
+            <ResetDialog onConfirm={reset} />
+          </div>
           {comments.length === 0 ? (
             <p className="py-8 text-center text-sm text-muted-foreground">
               No comments yet. Be the first to comment.

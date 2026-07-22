@@ -61,6 +61,7 @@ Open http://localhost:3000 with the backend running.
 | `POST`   | `/api/comments/`       | Add a comment — server sets author `Admin` + current time |
 | `PATCH`  | `/api/comments/{id}/`  | Edit a comment's `text`                        |
 | `DELETE` | `/api/comments/{id}/`  | Delete a comment                               |
+| `POST`   | `/api/comments/reset/` | Reset the database to the original seed data   |
 
 Run the backend tests with `uv run python manage.py test`.
 
@@ -72,6 +73,9 @@ Run the backend tests with `uv run python manage.py test`.
 - `image` is treated as the commenter's avatar (with initials as a fallback),
   matching the seed data and the YouTube/Reddit framing.
 - Deletes are hard deletes.
+- A **Reset** control in the header restores the original seed data (type-to-
+  confirm). The same reset is available as `./start.sh --fresh` or
+  `POST /api/comments/reset/`.
 
 ## If I had more time
 

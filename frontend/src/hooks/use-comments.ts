@@ -6,6 +6,7 @@ import {
   createComment,
   deleteComment,
   getComments,
+  resetComments,
   updateComment,
 } from "@/lib/api";
 import type { Comment } from "@/lib/types";
@@ -57,5 +58,9 @@ export function useComments() {
     setComments((prev) => prev.filter((c) => c.id !== id));
   }, []);
 
-  return { comments, loading, error, reload, add, edit, remove };
+  const reset = useCallback(async () => {
+    setComments(await resetComments());
+  }, []);
+
+  return { comments, loading, error, reload, add, edit, remove, reset };
 }
