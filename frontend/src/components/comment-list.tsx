@@ -26,7 +26,7 @@ export function CommentList() {
 
       {!loading && !error && (
         <>
-          <h2 className="border-t py-4 text-sm font-medium text-muted-foreground">
+          <h2 className="border-t py-4 font-mono text-xs uppercase tracking-widest text-muted-foreground">
             {comments.length} {comments.length === 1 ? "comment" : "comments"}
           </h2>
           {comments.length === 0 ? (

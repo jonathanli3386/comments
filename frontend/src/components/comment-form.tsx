@@ -30,7 +30,9 @@ export function CommentForm({
   return (
     <form onSubmit={handleSubmit} className="flex gap-3 py-4">
       <Avatar className="size-10">
-        <AvatarFallback>A</AvatarFallback>
+        <AvatarFallback className="bg-brand font-mono font-semibold text-brand-foreground">
+          A
+        </AvatarFallback>
       </Avatar>
       <div className="flex-1 space-y-2">
         <Textarea
