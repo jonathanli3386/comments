@@ -15,6 +15,18 @@ The 16 seed comments come from `backend/data/comments.json`.
 - **uv** (installs Python + backend dependencies) — `curl -LsSf https://astral.sh/uv/install.sh | sh`
 - **Node.js 20+** and npm
 
+## Quick start
+
+One command installs dependencies, prepares and seeds the database, and starts
+both servers:
+
+```bash
+./start.sh
+```
+
+Then open http://localhost:3000. Use `./start.sh --fresh` to reset the database
+to the original seed data. To run the pieces yourself instead, see below.
+
 ## Run the backend
 
 ```bash
