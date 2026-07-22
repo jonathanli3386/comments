@@ -130,6 +130,17 @@ USE_I18N = True
 USE_TZ = True
 
 
+# Django REST Framework
+# https://www.django-rest-framework.org/api-guide/settings/
+# Pagination is intentionally disabled: list endpoints must return a bare JSON
+# array, which the frontend consumes directly. Enabling pagination would wrap
+# the response in {"results": [...]} and break that contract. Add API-wide
+# defaults (throttling, auth, filter backends) to this block.
+REST_FRAMEWORK = {
+    "DEFAULT_PAGINATION_CLASS": None,
+}
+
+
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.2/howto/static-files/
 

@@ -4,6 +4,12 @@ from .models import Comment
 
 
 class CommentSerializer(serializers.ModelSerializer):
+    """API representation of a :class:`~comments.models.Comment`.
+
+    To expose a new model field, add it to ``fields`` (and to
+    ``read_only_fields`` unless clients should be allowed to write it).
+    """
+
     class Meta:
         model = Comment
         fields = ["id", "author", "text", "date", "likes", "image"]
