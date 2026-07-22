@@ -3,8 +3,8 @@ import { ThumbsUp } from "lucide-react";
 import { DeleteCommentDialog } from "@/components/delete-comment-dialog";
 import { EditCommentDialog } from "@/components/edit-comment-dialog";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import type { Comment } from "@/lib/types";
-import { formatDate, getInitials } from "@/lib/utils";
+import { formatDate, getInitials } from "@/lib/format";
+import type { Comment, DeleteComment, EditComment } from "@/lib/types";
 
 export function CommentItem({
   comment,
@@ -12,8 +12,8 @@ export function CommentItem({
   onDelete,
 }: {
   comment: Comment;
-  onEdit: (id: number, text: string) => Promise<void>;
-  onDelete: (id: number) => Promise<void>;
+  onEdit: EditComment;
+  onDelete: DeleteComment;
 }) {
   return (
     <article className="flex gap-3 py-4">

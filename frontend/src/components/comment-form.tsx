@@ -5,11 +5,12 @@ import { useState } from "react";
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
+import type { AddComment } from "@/lib/types";
 
 export function CommentForm({
   onSubmit,
 }: {
-  onSubmit: (text: string) => Promise<void>;
+  onSubmit: AddComment;
 }) {
   const [text, setText] = useState("");
   const [submitting, setSubmitting] = useState(false);

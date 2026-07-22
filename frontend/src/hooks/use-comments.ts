@@ -12,6 +12,12 @@ import type { Comment } from "@/lib/types";
 
 const LOAD_ERROR = "Could not load comments. Is the backend running?";
 
+/**
+ * Single source of truth for comment data and mutations. Fetches on mount and
+ * keeps local state in sync after each mutation (no refetch). New behaviour —
+ * e.g. `like(id)` or sorting — belongs here: add an `api` call, update state,
+ * and return the handler alongside `add`/`edit`/`remove`.
+ */
 export function useComments() {
   const [comments, setComments] = useState<Comment[]>([]);
   const [loading, setLoading] = useState(true);

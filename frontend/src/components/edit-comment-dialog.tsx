@@ -14,14 +14,14 @@ import {
   DialogTrigger,
 } from "@/components/ui/dialog";
 import { Textarea } from "@/components/ui/textarea";
-import type { Comment } from "@/lib/types";
+import type { Comment, EditComment } from "@/lib/types";
 
 export function EditCommentDialog({
   comment,
   onSubmit,
 }: {
   comment: Comment;
-  onSubmit: (id: number, text: string) => Promise<void>;
+  onSubmit: EditComment;
 }) {
   const [open, setOpen] = useState(false);
   const [text, setText] = useState(comment.text);

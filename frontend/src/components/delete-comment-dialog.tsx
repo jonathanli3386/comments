@@ -15,13 +15,14 @@ import {
   AlertDialogTrigger,
 } from "@/components/ui/alert-dialog";
 import { Button } from "@/components/ui/button";
+import type { DeleteComment } from "@/lib/types";
 
 export function DeleteCommentDialog({
   commentId,
   onConfirm,
 }: {
   commentId: number;
-  onConfirm: (id: number) => Promise<void>;
+  onConfirm: DeleteComment;
 }) {
   const [deleting, setDeleting] = useState(false);
 
