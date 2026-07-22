@@ -1,5 +1,6 @@
 import { ThumbsUp } from "lucide-react";
 
+import { DeleteCommentDialog } from "@/components/delete-comment-dialog";
 import { EditCommentDialog } from "@/components/edit-comment-dialog";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import type { Comment } from "@/lib/types";
@@ -8,9 +9,11 @@ import { formatDate, getInitials } from "@/lib/utils";
 export function CommentItem({
   comment,
   onEdit,
+  onDelete,
 }: {
   comment: Comment;
   onEdit: (id: number, text: string) => Promise<void>;
+  onDelete: (id: number) => Promise<void>;
 }) {
   return (
     <article className="flex gap-3 py-4">
@@ -33,6 +36,7 @@ export function CommentItem({
             {comment.likes}
           </span>
           <EditCommentDialog comment={comment} onSubmit={onEdit} />
+          <DeleteCommentDialog commentId={comment.id} onConfirm={onDelete} />
         </div>
       </div>
     </article>

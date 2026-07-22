@@ -7,7 +7,7 @@ import { Skeleton } from "@/components/ui/skeleton";
 import { useComments } from "@/hooks/use-comments";
 
 export function CommentList() {
-  const { comments, loading, error, reload, add, edit } = useComments();
+  const { comments, loading, error, reload, add, edit, remove } = useComments();
 
   return (
     <section>
@@ -36,7 +36,12 @@ export function CommentList() {
           ) : (
             <div className="divide-y">
               {comments.map((comment) => (
-                <CommentItem key={comment.id} comment={comment} onEdit={edit} />
+                <CommentItem
+                  key={comment.id}
+                  comment={comment}
+                  onEdit={edit}
+                  onDelete={remove}
+                />
               ))}
             </div>
           )}
