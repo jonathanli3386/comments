@@ -13,7 +13,7 @@ The 16 seed comments come from `backend/data/comments.json`.
 ## Prerequisites
 
 - **uv** (installs Python + backend dependencies) — `curl -LsSf https://astral.sh/uv/install.sh | sh`
-- **Node.js 20+** and npm
+- **Node.js 20+** and npm - https://nodejs.org/en/download
 
 ## Quick start
 
