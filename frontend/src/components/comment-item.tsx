@@ -1,10 +1,17 @@
 import { ThumbsUp } from "lucide-react";
 
+import { EditCommentDialog } from "@/components/edit-comment-dialog";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import type { Comment } from "@/lib/types";
 import { formatDate, getInitials } from "@/lib/utils";
 
-export function CommentItem({ comment }: { comment: Comment }) {
+export function CommentItem({
+  comment,
+  onEdit,
+}: {
+  comment: Comment;
+  onEdit: (id: number, text: string) => Promise<void>;
+}) {
   return (
     <article className="flex gap-3 py-4">
       <Avatar className="size-10">
@@ -20,9 +27,12 @@ export function CommentItem({ comment }: { comment: Comment }) {
           </time>
         </div>
         <p className="whitespace-pre-wrap text-sm leading-relaxed">{comment.text}</p>
-        <div className="flex items-center gap-1.5 pt-1 text-xs text-muted-foreground">
-          <ThumbsUp className="size-3.5" />
-          {comment.likes}
+        <div className="flex items-center gap-1 pt-1 text-xs text-muted-foreground">
+          <span className="flex items-center gap-1.5 pr-2">
+            <ThumbsUp className="size-3.5" />
+            {comment.likes}
+          </span>
+          <EditCommentDialog comment={comment} onSubmit={onEdit} />
         </div>
       </div>
     </article>

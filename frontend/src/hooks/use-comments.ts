@@ -2,7 +2,7 @@
 
 import { useCallback, useEffect, useState } from "react";
 
-import { createComment, getComments } from "@/lib/api";
+import { createComment, getComments, updateComment } from "@/lib/api";
 import type { Comment } from "@/lib/types";
 
 const LOAD_ERROR = "Could not load comments. Is the backend running?";
@@ -36,5 +36,10 @@ export function useComments() {
     setComments((prev) => [created, ...prev]);
   }, []);
 
-  return { comments, loading, error, reload, add };
+  const edit = useCallback(async (id: number, text: string) => {
+    const updated = await updateComment(id, text);
+    setComments((prev) => prev.map((c) => (c.id === id ? updated : c)));
+  }, []);
+
+  return { comments, loading, error, reload, add, edit };
 }
